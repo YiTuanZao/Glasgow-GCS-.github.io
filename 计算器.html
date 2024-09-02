@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glasgow昏迷量表(GCS)计算器</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+    </style>
+    
+    
+    <script>
+        function calculateScore() {
+            let totalScore = 0;
+            const scoreMapping = {
+                'E1': [0, 1, 2, 3, 4],
+                'E2': [0, 1, 2, 3, 4,5],
+                'E3': [0, 1, 2, 3, 4,5,6],
+               
+            };
+
+            for (let key in scoreMapping) {
+                const checkboxs = document.getElementsByName(key);
+                for (let checkbox of checkboxs) {
+                    if (checkbox.checked) {
+                        
+                        totalScore += parseInt(checkbox.value[0]); // 取值的第一个字符并转为整数
+                    }
+                }
+            }
+
+          
+            document.getElementById("totalScore").innerText = "总分: " + totalScore;
+        }
+    </script>
+    
+
+
+
+<body>
+  
+    <div class="container">
+        <h1>Glasgow昏迷量表(GCS)</h1>
+        <style>
+            h1 {
+              text-align: center;
+            }
+          </style>
+       
+       <table>
+        <thead>
+            <tr>
+                <th>系统</th>
+                <th>项目</th>
+                <th>刺激</th>
+                <th>患者反应</th>
+                <th>评分</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="5">格拉斯哥昏迷量表（E）</td>
+                <td rowspan="5">睁眼（单选）</td>
+                <td>自发</td>
+                <td>
+                    自己睁眼
+                </td>
+                <td>
+                    <input type="checkbox" name="E1" value="4" onclick="calculateScore()"> 4分<br>
+                </td>
+            </tr>
+            <tr>
+                
+                <td>语言</td>
+                <td>
+                    呼叫时睁眼
+                </td>
+                <td><input type="checkbox" name="E1" value="3" onclick="calculateScore()"> 3分<br></td>
+            </tr>
+            <tr>
+                
+                <td rowspan="2">疼痛</td>
+                <td>
+                   疼痛刺激时睁眼
+                </td>
+                <td><input type="checkbox" name="E1" value="2" onclick="calculateScore()"> 2分<br></td>
+            </tr>
+            <tr>
+                
+    
+                <td>
+                     任何刺激不睁眼
+                </td>
+                <td><input type="checkbox" name="E1" value="1" onclick="calculateScore()"> 1分<br></td>
+            </tr>
+    
+            <tr>
+                <td>“C”(closed)</td>
+                <td>
+                    如因眼肿、骨折等不能睁眼，应以“C”(closed)表示
+                </td>
+                <td>C分</td>
+            </tr>
+        </tbody>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="7">格拉斯哥昏迷量表(V)</td>
+            <td rowspan="7">言语反应（单选）</td>
+            <td rowspan="5">语言</td>
+            <td>
+               能正确会话
+            </td>
+            <td><input type="checkbox" name="E2" value="5" onclick="calculateScore()"> 5分<br></td>
+        </tr>
+        <tr>
+            
+            
+            <td>
+                 语言错乱，定向障碍
+            </td>
+            <td><input type="checkbox" name="E2" value="4" onclick="calculateScore()"> 4分<br></td>
+        </tr>
+        <tr>
+            
+            
+            <td>
+                说话能被理解，但无意义
+            </td>
+            <td><input type="checkbox" name="E2" value="3" onclick="calculateScore()"> 3分<br></td>
+        </tr>
+        <tr>
+            
+           
+            <td>
+                能发出声音，但不能被理解
+            </td>
+            <td><input type="checkbox" name="E2" value="2" onclick="calculateScore()"> 2分<br></td>
+        </tr>
+        <tr>
+            
+           
+            <td>
+                不发声
+            </td>
+            <td><input type="checkbox" name="E2" value="1" onclick="calculateScore()"> 1分<br></td>
+        </tr>
+        <tr>
+            <td>“T"(tube)</td>
+            <td>
+                因气管插管或切开而无法正常发声，以“T"(tube)表示
+            </td>
+            <td>T分</td>
+        </tr>
+        <tr>
+            <td>“D”(dysphasic)</td>
+            <td>
+                平素有言语障碍史，以“D”(dysphasic)表示
+            </td>
+            <td>D分</td>
+        </tr>
+    </tbody>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="6">格拉斯哥昏迷量表(M)</td>
+            <td rowspan="6">运动反应（单选）</td>
+            <td>口令</td>
+            <td>
+               能执行简单的命令
+            </td>
+            <td><input type="checkbox" name="E3" value="6" onclick="calculateScore()"> 6分<br></td>
+        </tr>
+        <td rowspan="5">疼痛</td
+        <tr>
+            <td>
+                疼痛时能拨开医生的手
+            </td>
+            <td> <input type="checkbox" name="E3" value="5" onclick="calculateScore()"> 5分<br></td>
+        </tr>
+        <tr>
+            
+            
+            <td>
+                对疼痛刺激有反应，肢体会回缩
+            </td>
+            <td> <input type="checkbox" name="E3" value="4" onclick="calculateScore()"> 4分<br></td>
+        </tr>
+        <tr>
+            
+            
+            <td>
+                 对疼痛刺激有反应，肢体会弯曲，呈“去皮质强直"姿势
+            </td>
+            <td><input type="checkbox" name="E3" value="3" onclick="calculateScore()"> 3分<br></td>
+        </tr>
+        <tr>
+            
+            
+            <td>
+                对疼痛刺激有反应，肢体会伸直，呈“去大脑强直"姿势
+            </td>
+            <td> <input type="checkbox" name="E3" value="2" onclick="calculateScore()"> 2分<br></td>
+        </tr>
+        <tr>
+            
+            
+            <td>
+               对疼痛无任何反应
+            </td>
+            <td><input type="checkbox" name="E3" value="1" onclick="calculateScore()"> 1分<br></td>
+        </tr>
+    </tbody>
+    </thead>
+    
+    
+    
+    </thead>
+    
+    </table>
+    
+    
+        
+        <h2 id="totalScore">总分: 0</h2>
+    </div>
+</body>
+<script src="my.js" type="text/javascrript" ></script>
+
+
+</html>
